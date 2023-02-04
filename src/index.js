@@ -19,6 +19,7 @@ root.render(
      }}
       useRefreshTokens
       cacheLocation="localstorage"
+      scope='user_metadata app_metadata slack_id'
      >
         <App />
      </AuthProvider>

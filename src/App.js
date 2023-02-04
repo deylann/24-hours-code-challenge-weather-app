@@ -1,18 +1,21 @@
 import Navbar from "./components/Navbar";
-import { Routes, Route,Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Welcome from "./components/Welcome";
 import Home from "./components/Home";
-import Dashboard from "./components/Dashboard";
+import Weather from "./components/Weather";
 import ProtectedRoute from "./auth/ProtectedRoute";
-import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-  const { isAuthenticated } = useAuth0()
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Home /> } />
-        <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} />}/>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<ProtectedRoute component={Home} />} />
+        <Route
+          path="/weather"
+          element={<ProtectedRoute component={Weather} />}
+        />
       </Routes>
     </>
   );

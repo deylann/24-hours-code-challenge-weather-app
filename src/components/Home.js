@@ -1,32 +1,58 @@
 import React from "react";
 import Layout from "../Layout";
 import { useAuth0 } from "@auth0/auth0-react";
-const Home = () => {
-  const {  loginWithRedirect } = useAuth0();
+const Dashboard = () => {
+  const { user } = useAuth0();
 
   return (
     <Layout>
-      <div className="flex flex-col-reverse sm:grid sm:grid-rows-3 sm:grid-flow-col sm:gap-3">
-        <div className="flex flex-col row-span-3 sm:ml-[200px] items-center justify-center sm:h-[800px]">
-            <div className="pl-5 sm:self-start">
-              <h3 className="text-5xl text-white font-semibold mb-2">Welcome to the weather forcast web application.</h3>
-              <p className="text-2xl my-10 sm:my-5 font-light text-white">Please login with your Github user to use the application and view the weather in your city</p>
+      <div className="ml-10 mr-10 sm:ml-[250px] sm:mr-[250px]">
+        <h2 className="text-3xl text-white font-semibold">
+          Hello,{" "}
+          <span>
+            {user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1)}
+          </span>
+        </h2>
+        <p className="text-white font-light">
+          Github Link: https://github.com/{user.nickname}
+        </p>
+        <div className="mt-10">
+          <div class="relative mb-6">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg
+                fill="#000000"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-violet-700"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="m14.91 13.09-3.68-3.21a4.86 4.86 0 0 0 .86-2.77A5.34 5.34 0 0 0 6.59 2a5.35 5.35 0 0 0-5.5 5.15 5.34 5.34 0 0 0 5.5 5.15 5.71 5.71 0 0 0 3.82-1.44L14.08 14zM6.59 11a4.09 4.09 0 0 1-4.25-3.9 4.09 4.09 0 0 1 4.25-3.9 4.09 4.09 0 0 1 4.25 3.9A4.08 4.08 0 0 1 6.59 11z"></path>
+                </g>
+              </svg>
             </div>
-            <div className="pl-5 sm:self-start">
-              <button className="text-2xl text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2" onClick={loginWithRedirect}>Login with Github</button>
-            </div>
-        </div>
-        <div className="flex flex-col row-span-3 items-center justify-center sm: sm:h-[800px]">
-              <img
-              src="/img/logo.png"
-              className="h-[300px] w-[300px] mr-3"
-              alt="Logo"
+            <input
+              type="text"
+              id="input-group-1"
+              class="bg-gray-50 border w-full text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-violet block pl-10 p-2.5 w-300"
+              placeholder="Enter city..."
             />
+          </div>
+          <div>
+            <button className="text-2xl rounded-lg text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2">
+              Check weather
+            </button>
+          </div>
         </div>
       </div>
-       
+      <div></div>
     </Layout>
   );
 };
 
-export default Home;
+export default Dashboard;
