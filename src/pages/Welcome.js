@@ -1,10 +1,13 @@
 import React from "react";
 import Layout from "../Layout";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
-
+  const navigate = useNavigate();
+  const navigateToWeather = () => {
+    navigate(`/weather`);
+  };
   return (
     <Layout>
       <div className="flex flex-col-reverse sm:grid sm:grid-rows-3 sm:grid-flow-col sm:gap-3">
@@ -21,14 +24,17 @@ const Home = () => {
           <div className="pl-5 sm:self-start">
             {!isAuthenticated ? (
               <button
-                className="text-2xl text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2"
+                className="text-2xl text-violet-700 hover:bg-violet-700 rounded-full border hover:text-white bg-white px-10 py-2"
                 onClick={loginWithRedirect}
               >
                 Login with Github
               </button>
             ) : (
-              <button className="text-2xl text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2">
-                <Link to="/weather">Check weather</Link>
+              <button
+                className="text-2xl text-violet-700 hover:bg-violet-700 border rounded-full hover:text-white bg-white px-10 py-2"
+                onClick={navigateToWeather}
+              >
+                Go to Weather
               </button>
             )}
           </div>

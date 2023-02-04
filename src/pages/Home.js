@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../Layout";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
+  const inputEl = useRef(null);
   const { user } = useAuth0();
+  const [country, setCountry] = useState("");
+  const navigate = useNavigate();
 
+  const handleChangeTextCountry = (e) => {
+    setCountry(e.target.value);
+  };
+
+  const handleRequestWeather = () => {
+    if (country) {
+      navigate(`/weather/${country}`);
+    } else {
+      inputEl.current.focus();
+    }
+  };
   return (
     <Layout>
       <div className="ml-10 mr-10 sm:ml-[250px] sm:mr-[250px]">
@@ -38,14 +53,19 @@ const Dashboard = () => {
             </div>
             <input
               type="text"
+              ref={inputEl}
               id="input-group-1"
               class="bg-gray-50 border w-full text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-violet block pl-10 p-2.5 w-300"
-              placeholder="Enter city..."
+              placeholder="Enter City or County ex: (London)"
+              onChange={(e) => handleChangeTextCountry(e)}
             />
           </div>
           <div>
-            <button className="text-2xl rounded-lg text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2">
-              Check weather
+            <button
+              className="text-2xl rounded-lg text-violet-700 hover:bg-violet-700 border hover:text-white bg-white px-10 py-2"
+              onClick={handleRequestWeather}
+            >
+              Submit
             </button>
           </div>
         </div>
