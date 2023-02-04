@@ -5,10 +5,7 @@ const TableItem = ({ data }) => {
     <tbody>
       {data ? (
         data?.list?.map((current, index) => (
-          <tr
-            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-            key={index}
-          >
+          <tr className="bg-white border-b " key={index}>
             <td className="px-6 py-4 ">
               <img
                 src={`http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`}
@@ -36,7 +33,7 @@ const TableItem = ({ data }) => {
           </tr>
         ))
       ) : (
-        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <tr className="bg-white border-b ">
           <td
             colSpan={7}
             className="px-6 py-4 hidden sm:table-cell col-span-6 text-center"

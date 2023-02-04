@@ -7,8 +7,8 @@ const Table = () => {
   const { data } = useFetchGeo(country);
 
   return (
-    <table className="w-full mx-2 sm:mx-0 text-sm text-left text-gray-500 dark:text-gray-400">
-      <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+    <table className="w-full mx-2 sm:mx-0 text-sm text-left text-gray-500 ">
+      <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white ">
         Current Weather in :{" "}
         {`${
           country
@@ -16,7 +16,7 @@ const Table = () => {
             : "Philippines"
         }`}
       </caption>
-      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
         <tr>
           <th></th>
           <th scope="col" className="px-6 py-3">
