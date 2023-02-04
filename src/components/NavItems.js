@@ -11,7 +11,7 @@ const NavItems = ({ navLinks }) => {
             to={link.to}
             className={`${
               pathname === link.to && "bg-white text-violet-700"
-            } block py-2 pl-3 pr-4 mt-1 text-white rounded-full hover:bg-white hover:text-violet-700`}
+            } block py-2 pl-3 pr-4 mt-1 sm:mt-0 text-white rounded-full hover:bg-white hover:text-violet-700`}
             onClick={link.onCloseNav}
           >
             {link.title}

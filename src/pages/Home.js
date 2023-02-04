@@ -19,6 +19,7 @@ const Dashboard = () => {
       inputEl.current.focus();
     }
   };
+
   return (
     <Layout>
       <div className="ml-10 mr-10 sm:ml-[250px] sm:mr-[250px]">

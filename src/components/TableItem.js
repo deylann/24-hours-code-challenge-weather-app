@@ -14,7 +14,7 @@ const TableItem = ({ data }) => {
               />
             </td>
             <th scope="row" className="px-6 py-4">
-              {moment().format("YYYY-MM-DD")}
+              {moment().format("MM/DD/YYYY")}
             </th>
 
             <td className="px-6 py-4 ">{current?.main.temp}</td>
