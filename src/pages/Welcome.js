@@ -25,7 +25,13 @@ const Home = () => {
             {!isAuthenticated ? (
               <button
                 className="text-2xl text-violet-700 hover:bg-violet-700 rounded-full border hover:text-white bg-white px-10 py-2"
-                onClick={loginWithRedirect}
+                onClick={() =>
+                  loginWithRedirect({
+                    appState: {
+                      returnTo: "/home",
+                    },
+                  })
+                }
               >
                 Login with Github
               </button>

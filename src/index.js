@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter  } from "react-router-dom";
-// import history from "./utils/history";
+import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./auth/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -11,18 +10,18 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-     <AuthProvider
-     domain={process.env.REACT_APP_AUTH_DOMAIN}
-     clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
-     authorizationParams={{
-       redirect_uri: window.location.origin,
-     }}
-      useRefreshTokens
-      cacheLocation="localstorage"
-      scope='user_metadata app_metadata slack_id'
-     >
+      <AuthProvider
+        domain={process.env.REACT_APP_AUTH_DOMAIN}
+        clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+        useRefreshTokens
+        cacheLocation="localstorage"
+        scope="user_metadata app_metadata slack_id"
+      >
         <App />
-     </AuthProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
